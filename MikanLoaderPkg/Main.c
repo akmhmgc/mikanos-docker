@@ -118,7 +118,7 @@ EFI_STATUS OpenRootDir(EFI_HANDLE image_handle, EFI_FILE_PROTOCOL** root) {
 EFI_STATUS EFIAPI UefiMain(
     EFI_HANDLE image_handle,
     EFI_SYSTEM_TABLE* system_table) {
-  Print(L"Hello, Mikan World!\n");
+  Print(L"Hello, Monkey world!\n");
 
   // #@@range_begin(main)
   CHAR8 memmap_buf[4096 * 4];
