@@ -104,3 +104,16 @@ VNC 設定を有効にすることで, ホストに X11 Server を用意する�
 - [ブラウザだけでOS自作入門しよう | Zenn](https://zenn.dev/sarisia/articles/8dbe4fe2f1c656)
 - [「ゼロからのOS自作入門」の副読本的記事 | Zenn](https://zenn.dev/karaage0703/articles/1bdb8930182c6c)
     - devcontainer の起動方法や, macOS での X11 Server の設定などが大変分かりやすく説明されています
+
+## ビルド方法
+
+elfのビルド
+```bash
+clang++ -o2 -Wall -g --target=x86_64-elf -ffreestanding -mno-red-zone \-fno-exceptions -fno-rtti -std=c++17 -c main.cpp
+
+ld.lld --entry KernelMain -z norelro --image-base 0x100000 --static \-o kernel.elf main.o
+```
+
+```bash
+~/osbook/devenv/run_qemu.sh ~/edk2/Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi /workspaces/mikanos-docker/kernel/kernel.elf
+```
